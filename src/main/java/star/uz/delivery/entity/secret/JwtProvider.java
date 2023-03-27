@@ -17,7 +17,7 @@ public class JwtProvider {
     @Value(value = "${jwt.secretKey}")
     private String secretKey;
 
-    @Value(value = "${jwt.expriDateInMilliSecond}")
+    @Value(value = "${jwt.expireDateInMilliSecond}")
     private long expirationDate;
 
     private final UserRepo userRepo;
