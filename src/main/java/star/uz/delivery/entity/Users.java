@@ -39,6 +39,14 @@ public class Users extends AbsUUID implements UserDetails {
      private boolean credentialsNonExpired=true;
      boolean enabled=true;
 
+    public Users( String fio, String phoneNumber, String address, String password, Role role) {
+        this.fio = fio;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.password = password;
+        this.role = role;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singleton(role);

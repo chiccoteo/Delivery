@@ -18,14 +18,15 @@ public class AuthServiceImpl implements AuthService {
     private final AuthenticationManager manager;
 
     @Override
-    public ApiResponse<?> login(LoginDTO loginDTO) {
-        try {
-            Authentication authentication = manager.authenticate(new UsernamePasswordAuthenticationToken(loginDTO.getFio(), loginDTO.getPassword()));
-            Users principal = (Users) authentication.getPrincipal();
-            return ApiResponse.successResponse("You have successfully logged in ", jwtProvider.generateToken(principal));
-        } catch (Exception e) {
-            e.getStackTrace();
-            return ApiResponse.errorResponse(e.getMessage());
-        }
+        public ApiResponse<?> login(LoginDTO loginDTO) {
+            try {
+                Authentication authenticate = manager.authenticate(new UsernamePasswordAuthenticationToken(loginDTO.getFio(), loginDTO.getPassword()));
+                Users principal = (Users) authenticate.getPrincipal();
+                return ApiResponse.successResponse("You have successfully logged in", jwtProvider.generateToken(principal));
+            } catch (Exception e) {
+                e.printStackTrace();
+                return ApiResponse.errorResponse(e.getMessage());
+            }
     }
+
 }
