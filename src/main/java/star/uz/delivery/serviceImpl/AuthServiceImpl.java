@@ -6,7 +6,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import star.uz.delivery.entity.Users;
-import star.uz.delivery.entity.secret.JwtProvider;
+import star.uz.delivery.secret.JwtProvider;
 import star.uz.delivery.payload.ApiResponse;
 import star.uz.delivery.payload.LoginDTO;
 import star.uz.delivery.service.AuthService;
