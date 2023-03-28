@@ -53,16 +53,17 @@ public class JwtProvider {
         } catch (IllegalArgumentException illegalArgumentException) {
             System.out.println("An empty token");
         }
-    return  false;
+        return false;
     }
-    public Users getUserFromToken(String  token){
-        String  userId =Jwts
+
+    public Users getUserFromToken(String token) {
+        String userId = Jwts
                 .parser()
                 .setSigningKey(secretKey)
                 .parseClaimsJws(token)
                 .getBody()
                 .getSubject();
-        return  userRepo.findById(UUID.fromString(userId)).orElse(null);
+        return userRepo.findById(UUID.fromString(userId)).orElse(null);
     }
 
 

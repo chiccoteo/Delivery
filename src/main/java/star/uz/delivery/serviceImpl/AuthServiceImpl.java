@@ -16,15 +16,16 @@ import star.uz.delivery.service.AuthService;
 public class AuthServiceImpl implements AuthService {
     private final JwtProvider jwtProvider;
     private final AuthenticationManager manager;
+
     @Override
     public ApiResponse<?> login(LoginDTO loginDTO) {
-        try{
-            Authentication authentication = manager.authenticate(new UsernamePasswordAuthenticationToken(loginDTO.getFio(),loginDTO.getPassword()));
-            Users principal = (Users)  authentication.getPrincipal();
-            return  ApiResponse.successResponse("You have successfully logged in ",jwtProvider.generateToken(principal));
-        }catch (Exception e){
+        try {
+            Authentication authentication = manager.authenticate(new UsernamePasswordAuthenticationToken(loginDTO.getFio(), loginDTO.getPassword()));
+            Users principal = (Users) authentication.getPrincipal();
+            return ApiResponse.successResponse("You have successfully logged in ", jwtProvider.generateToken(principal));
+        } catch (Exception e) {
             e.getStackTrace();
-            return  ApiResponse.errorResponse(e.getMessage());
+            return ApiResponse.errorResponse(e.getMessage());
         }
     }
 }
