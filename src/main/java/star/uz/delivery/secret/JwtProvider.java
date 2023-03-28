@@ -1,11 +1,11 @@
-package star.uz.delivery.entity.secret;
+package star.uz.delivery.secret;
 
 import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import star.uz.delivery.entity.Users;
-import star.uz.delivery.entity.repository.UserRepo;
+import star.uz.delivery.repository.UserRepo;
 
 import java.util.Date;
 import java.util.UUID;

@@ -12,8 +12,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import star.uz.delivery.entity.secret.MyUserDetailsService;
-import star.uz.delivery.entity.secret.JwtFilter;
+import star.uz.delivery.secret.MyUserDetailsService;
+import star.uz.delivery.secret.JwtFilter;
 
 @Configuration
 @EnableWebSecurity

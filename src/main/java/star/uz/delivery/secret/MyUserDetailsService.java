@@ -1,4 +1,4 @@
-package star.uz.delivery.entity.secret;
+package star.uz.delivery.secret;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import star.uz.delivery.entity.Users;
-import star.uz.delivery.entity.repository.UserRepo;
+import star.uz.delivery.repository.UserRepo;
 
 import java.util.Optional;
 

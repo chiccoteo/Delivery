@@ -1,4 +1,4 @@
-package star.uz.delivery.entity.secret;
+package star.uz.delivery.secret;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
