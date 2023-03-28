@@ -16,13 +16,14 @@ import java.io.IOException;
 public class JwtFilter extends OncePerRequestFilter {
     @Autowired
     private JwtProvider jwtProvider;
+
     @Override
     protected void doFilterInternal(
-          @NonNull HttpServletRequest request,
-          @NonNull  HttpServletResponse response,
-          @NonNull  FilterChain filterChain
+            @NonNull HttpServletRequest request,
+            @NonNull HttpServletResponse response,
+            @NonNull FilterChain filterChain
     ) throws ServletException, IOException {
-       final String token = getTokenFromRequest(request);
+        final String token = getTokenFromRequest(request);
         if (token != null) {
             Users user = getUser(token);
             if (user != null) {
@@ -43,14 +44,16 @@ public class JwtFilter extends OncePerRequestFilter {
         }
         filterChain.doFilter(request, response);
     }
-    public Users getUser(String token){
-        if (jwtProvider.validateToken(token)){
+
+    public Users getUser(String token) {
+        if (jwtProvider.validateToken(token)) {
             return jwtProvider.getUserFromToken(token);
         }
         return null;
     }
+
     public String getTokenFromRequest(HttpServletRequest request) {
         final String token = request.getHeader("Authorization");
-        return token != null ? token.substring(7): null;
+        return token != null ? token.substring(7) : null;
     }
 }

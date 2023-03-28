@@ -14,11 +14,12 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class MyUserDetailsService implements UserDetailsService {
     private final UserRepo userRepo;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<Users> optionalUsers = userRepo.findByFio(username);
         if (optionalUsers.isPresent())
             return optionalUsers.get();
-        throw new UsernameNotFoundException(username+"Not found!");
+        throw new UsernameNotFoundException(username + "Not found!");
     }
 }

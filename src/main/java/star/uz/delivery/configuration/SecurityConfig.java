@@ -1,6 +1,6 @@
 package star.uz.delivery.configuration;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -23,8 +23,13 @@ import star.uz.delivery.secret.JwtFilter;
         jsr250Enabled = true
 )
 public class SecurityConfig {
-    @Autowired
-    MyUserDetailsService userDetailsService;
+
+    final MyUserDetailsService userDetailsService;
+
+    public SecurityConfig(MyUserDetailsService userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
+
     @Bean
     public JwtFilter myJwtFilter(){
         return new JwtFilter();
