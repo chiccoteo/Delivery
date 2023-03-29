@@ -6,4 +6,5 @@ import star.uz.delivery.entity.CharactersProduct;
 import java.util.UUID;
 
 public interface CharactersProductRepo extends JpaRepository<CharactersProduct, UUID> {
+
 }
