@@ -20,7 +20,6 @@ public class DateLoader implements CommandLineRunner {
     private final PasswordEncoder passwordEncoder;
     private final RoleRepo roleRepo;
     private final UserRepo userRepo;
-//    private final
     @Value("${spring.sql.init.mode}")
     private String mode;
     @Override
