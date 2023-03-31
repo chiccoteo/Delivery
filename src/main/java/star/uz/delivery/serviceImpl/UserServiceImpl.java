@@ -16,13 +16,15 @@ import star.uz.delivery.repository.UserRepo;
 import star.uz.delivery.service.UserService;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
-    private UserRepo userRepo;
+    private final UserRepo userRepo;
     private final PasswordEncoder passwordEncoder;
     private final AttachmentRepo attachmentRepo;
     private final AttachmentContentRepo attachmentContentRepo;
@@ -49,8 +51,24 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ApiResponse<?> update(UserUpdateDto updateDto) {
-        return null;
+    public ApiResponse<?> update(UserUpdateDto dto,UUID id) {
+        Optional<Users> optionalUsers = userRepo.findById(id);
+        if (optionalUsers.isEmpty()){
+            return ApiResponse.errorResponse("User not found");
+        }
+        Users users = optionalUsers.get();
+        Optional<Role> optional = roleRepo.findById(dto.getRoleId());
+        if (optional.isEmpty()){
+            return ApiResponse.errorResponse("Role not found");
+        }
+        Role role = optional.get();
+        users.setFio(dto.getFio());
+        users.setAddress(dto.getAddress());
+        users.setPhoneNumber(dto.getPhoneNumber());
+        users.setPassword(passwordEncoder.encode(dto.getPassword()));
+        users.setRole(role);
+        userRepo.save(users);
+        return ApiResponse.successResponse("User saved");
     }
 
     @Override
@@ -65,16 +83,38 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ApiResponse<?> deleteUser(UUID id) {
-        return null;
+    try{
+        userRepo.deleteById(id);
+    }catch (Exception e){
+        return ApiResponse.errorResponse("User not deleted");
+    }
+
+        return ApiResponse.successResponse("User Deleted ");
     }
 
     @Override
     public ApiResponse<?> getByIdUser(UUID id) {
-        return null;
+        Optional<Users> optionalUsers = userRepo.findById(id);
+        if (optionalUsers.isEmpty()){
+            return ApiResponse.errorResponse("User not found");
+        }
+        return ApiResponse.successResponse(optionalUsers.get());
     }
 
     @Override
     public ApiResponse<?> getAllUser() {
-        return null;
+        List<UserCreatDto> all=userRepo.findAll().stream()
+                .map(this::generateUserDto)
+                .collect(Collectors.toList());
+        return ApiResponse.successResponse(all);
+    }
+    public UserCreatDto generateUserDto(Users users){
+        return UserCreatDto.builder()
+                .id(users.getId())
+                .fio(users.getFio())
+                .address(users.getAddress())
+                .phoneNumber(users.getPhoneNumber())
+                .roleId(users.getRole().getId())
+                .build();
     }
 }

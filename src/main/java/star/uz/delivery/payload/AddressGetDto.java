@@ -5,15 +5,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UserUpdateDto {
-    private String fio;
-    private String phoneNumber;
+public class AddressGetDto {
+    private UUID id;
     private String address;
-    private String password;
-    private long roleId;
-
 }
