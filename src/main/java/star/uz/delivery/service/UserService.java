@@ -11,7 +11,7 @@ import java.util.UUID;
 public interface UserService {
     ApiResponse<?> creatUser(UserCreatDto userCreatDto);
 
-    ApiResponse<?> update(UserUpdateDto updateDto);
+    ApiResponse<?> update(UserUpdateDto updateDto,UUID id);
 
     ApiResponse<?> downloadUserProfile(UUID id, HttpServletResponse response);
 

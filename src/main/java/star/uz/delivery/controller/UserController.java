@@ -19,8 +19,8 @@ public interface UserController {
     @PostMapping
     HttpEntity<?> creat(@RequestBody UserCreatDto creatDto);
 
-    @PutMapping
-    HttpEntity<?> update(@RequestBody UserUpdateDto updateDto);
+    @PutMapping("/{id}")
+    HttpEntity<?> update (@RequestBody UserUpdateDto dto,@PathVariable  UUID id );
 
     @GetMapping
     HttpEntity<?> get();

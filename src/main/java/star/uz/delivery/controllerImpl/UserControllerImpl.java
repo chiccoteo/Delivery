@@ -25,8 +25,8 @@ public class UserControllerImpl implements UserController {
     }
 
     @Override
-    public HttpEntity<?> update(UserUpdateDto updateDto) {
-        ApiResponse<?> response= userService.update(updateDto);
+    public HttpEntity<?> update(UserUpdateDto updateDto,UUID id) {
+        ApiResponse<?> response= userService.update(updateDto,id);
         return ResponseEntity.status(response.isSuccess()?200:409).body(response);
     }
 
