@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import star.uz.delivery.entity.template.AbsUUID;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Getter
@@ -14,7 +15,9 @@ import javax.persistence.Entity;
 @NoArgsConstructor
 @Entity
 public class Product extends AbsUUID {
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
     private double price;
     private String description;
     private Long categoryId;
