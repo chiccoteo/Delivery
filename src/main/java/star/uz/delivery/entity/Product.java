@@ -8,6 +8,7 @@ import star.uz.delivery.entity.template.AbsUUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -19,8 +20,7 @@ public class Product extends AbsUUID {
     private String name;
     @Column(nullable = false)
     private double price;
+    private UUID photo_id;
     private String description;
     private Long categoryId;
-
-
 }
