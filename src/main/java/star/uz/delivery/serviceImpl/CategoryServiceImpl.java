@@ -60,6 +60,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     public CategoryDto generated(Category category) {
         return CategoryDto.builder()
+                .id(category.getId())
                 .name(category.getName())
                 .parentCategoryId(category.getParentCategoryId())
                 .build();
