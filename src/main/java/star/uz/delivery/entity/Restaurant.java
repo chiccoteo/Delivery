@@ -8,6 +8,7 @@ import star.uz.delivery.entity.template.AbsEntity;
 import star.uz.delivery.entity.template.AbsUUID;
 
 import javax.persistence.Entity;
+import java.sql.Time;
 import java.util.Date;
 
 @Getter
@@ -19,8 +20,8 @@ public class Restaurant extends AbsUUID {
     private String restaurantName;
     private String address;
     private String phoneNumber;
-    private Date openTime;
-    private Date closeTime;
+    private Time openTime;
+    private Time closeTime;
 
 
 }

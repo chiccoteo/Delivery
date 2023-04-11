@@ -5,5 +5,6 @@ import star.uz.delivery.entity.Restaurant;
 
 import java.util.UUID;
 
-public interface RestaurantRepo extends JpaRepository<Restaurant, UUID> {
+public interface   RestaurantRepo extends JpaRepository<Restaurant, UUID> {
+    boolean existsByRestaurantNameAndPhoneNumber(String restaurantName, String phoneNumber);
 }
